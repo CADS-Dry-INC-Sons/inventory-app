@@ -38,5 +38,14 @@ describe("Inventory testing", () => {
       expect(data).toBe(JSON.stringify(allItems));
 
     })
+
+    it("successfully retrieves one item", async()=>{
+      const oneItem = await Item.findByPk(1)
+      const response = await request(app).get('/api/items/1');
+      const data = JSON.stringify(response.body);
+
+      expect(response.statusCode).toBe(200);
+      expect(data).toBe(JSON.stringify(oneItem));
+    })
   })
 });

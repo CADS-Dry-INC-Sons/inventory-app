@@ -14,7 +14,7 @@ export const ItemShow = ({ setItem, item, fetchItems, fetchItem }) => {
       <div>
         <img src={item.image} width="100" height="100" />
         <p>{item.name}</p>
-        <p>{Number(item.price).toFixed(2)}</p>
+        <p>${Number(item.price).toFixed(2)}</p>
         <p>{item.description}</p>
       </div>
       <button

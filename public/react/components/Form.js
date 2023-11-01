@@ -33,28 +33,28 @@ export const Form = ({ fetchItems }) => {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicName">
+      <Form className="form" onSubmit={handleSubmit}>
+        <Form.Group className="input mb-3" controlId="formBasicName">
           <Form.Label>Name</Form.Label>
           <Form.Control name="name" type="text" placeholder="Enter name" />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPrice">
+        <Form.Group className="input mb-3" controlId="formBasicPrice">
           <Form.Label>Price</Form.Label>
           <Form.Control name="price" type="number" step=".01" placeholder="Enter price" />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicName">
+        <Form.Group className="input mb-3" controlId="formBasicName">
           <Form.Label>Description</Form.Label>
           <Form.Control name="description" type="text" placeholder="Enter description" />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicCategory">
+        <Form.Group className="input mb-3" controlId="formBasicCategory">
           <Form.Label>Category</Form.Label>
           <Form.Control name="category" type="text" placeholder="Enter category" />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicImg">
+        <Form.Group className="input mb-3" controlId="formBasicImg">
           <Form.Label>Image Url</Form.Label>
           <Form.Control name="image" type="text" placeholder="Enter image url" />
         </Form.Group>

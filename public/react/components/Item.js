@@ -1,13 +1,23 @@
 import React from 'react';
-
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 export const Item = (props) => {
 
   return( 
-  <div onClick={()=> props.fetchItem(props.item.id)}>
-    <h3>{props.item.name}</h3>
-    <h4>${Number(props.item.price).toFixed(2)}</h4>
-    <img src={props.item.image} alt={props.item.name} width="100" height="100" />
-  </div>
+
+  <Card className="gallery-item" onClick={()=>{
+    props.setIsAdding(false)
+    props.fetchItem(props.item.id)
+  }
+  } style={{ width: '18rem' }}>
+    <Card.Img src={props.item.image} alt={props.item.name} width="50" height="250"/>
+    <Card.Body>
+      <Card.Title>{props.item.name}</Card.Title>
+      <Card.Text>
+      ${Number(props.item.price).toFixed(2)}
+      </Card.Text>
+    </Card.Body>
+  </Card>
   
   )
 } 

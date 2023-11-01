@@ -1,5 +1,7 @@
 import { React, useState } from "react";
 import apiURL from "../api";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export default function EditForm({
   item,
@@ -40,50 +42,62 @@ export default function EditForm({
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          value={itemName}
-          onChange={(e) => setItemName(e.target.value)}
-          style={{ overflowWrap: "anywhere" }}
-        />
-        <br />
-        <input
-          type="number"
-          step=".01"
-          name="price"
-          value={itemPrice}
-          onChange={(e) => setItemPrice(e.target.value)}
-          style={{ overflowWrap: "break-word" }}
-        />
-        <br />
-        <input
-          type="text"
-          name="description"
-          value={itemDescription}
-          onChange={(e) => setItemDescription(e.target.value)}
-          style={{ overflowWrap: "break-word" }}
-        />
-        <br />
-        <input
-          type="text"
-          name="category"
-          value={itemCategory}
-          onChange={(e) => setItemCategory(e.target.value)}
-          style={{ overflowWrap: "break-word" }}
-        />
-        <br />
-        <input
-          type="text"
-          name="image"
-          value={itemImage}
-          onChange={(e) => setItemImage(e.target.value)}
-          style={{ overflowWrap: "break-word" }}
-        />
-        <br />
-        <button type="submit">Submit new item</button>
-      </form>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            name="name"
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPrice">
+          <Form.Label>Price</Form.Label>
+          <Form.Control
+            ttype="number"
+            step=".01"
+            name="price"
+            value={itemPrice}
+            onChange={(e) => setItemPrice(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicDescription">
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            type="text"
+            name="description"
+            value={itemDescription}
+            onChange={(e) => setItemDescription(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicCategory">
+          <Form.Label>Category</Form.Label>
+          <Form.Control
+            type="text"
+            name="category"
+            value={itemCategory}
+            onChange={(e) => setItemCategory(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicImage">
+          <Form.Label>Image</Form.Label>
+          <Form.Control
+            type="text"
+            name="image"
+            value={itemImage}
+            onChange={(e) => setItemImage(e.target.value)}
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Update Item
+        </Button>
+      </Form>
     </>
   );
 }

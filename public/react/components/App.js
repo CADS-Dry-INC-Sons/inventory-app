@@ -35,21 +35,25 @@ export const App = () => {
   }, []);
 
   return (
-    <main>
+    <main className="Container">
+	<div className="Heading">
       <h1>CADS-DRY INC & Sons Store</h1>
+	</div>
       {!item.name ? (
-        <>
+        <div className="Center">
           <h2>All things 🔥!</h2>
           <Form fetchItems={fetchItems} />
           <ItemsList items={items} fetchItem={fetchItem} />
-        </>
+        </div>
       ) : (
+		<div className="Center">
         <ItemShow
           item={item}
           setItem={setItem}
           fetchItem={fetchItem}
           fetchItems={fetchItems}
         />
+		</div>
       )}
     </main>
   );

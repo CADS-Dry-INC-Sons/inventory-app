@@ -18,9 +18,38 @@
   flex-direction: column;
 }
 
+.btn{
+  width:100px;
+  margin-bottom: 15px;
+}
+
+.form{
+  border: 5px;
+  border-radius: 10px;
+  border-style: double;
+  border-color: hotpink;
+  background-color: rgb(243, 181, 212);
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-label {
+  background-color: rgb(243, 181, 212);
+  font-weight: 600;
+}
+.input{
+  background-color: rgb(243, 181, 212);
+}
 .Gallery {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding-top: 10px;;
+}
+
+.gallery-item{
+  margin-bottom: 15px;
+  box-shadow: 5px 5px 2px hotpink;
 }

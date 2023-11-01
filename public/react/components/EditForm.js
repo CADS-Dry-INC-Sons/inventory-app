@@ -42,8 +42,8 @@ export default function EditForm({
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicName">
+      <Form className="form" onSubmit={handleSubmit}>
+        <Form.Group className="input mb-3" controlId="formBasicName">
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
@@ -53,7 +53,7 @@ export default function EditForm({
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPrice">
+        <Form.Group className="input mb-3" controlId="formBasicPrice">
           <Form.Label>Price</Form.Label>
           <Form.Control
             ttype="number"
@@ -64,7 +64,7 @@ export default function EditForm({
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicDescription">
+        <Form.Group className="input mb-3" controlId="formBasicDescription">
           <Form.Label>Description</Form.Label>
           <Form.Control
             type="text"
@@ -74,7 +74,7 @@ export default function EditForm({
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicCategory">
+        <Form.Group className="input mb-3" controlId="formBasicCategory">
           <Form.Label>Category</Form.Label>
           <Form.Control
             type="text"
@@ -84,7 +84,7 @@ export default function EditForm({
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicImage">
+        <Form.Group className="input mb-3" controlId="formBasicImage">
           <Form.Label>Image</Form.Label>
           <Form.Control
             type="text"

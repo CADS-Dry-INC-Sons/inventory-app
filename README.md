@@ -5,6 +5,9 @@ This is a Full-Stack (front and back end) RESTful CRUD application to track an i
 
 ### Checkout the Deployed App on Render:  https://inventory-app-deployment-ip5q.onrender.com/
 
+## Checkout our App's Wireframes
+![Screenshot 2023-11-02 3 03 24 PM](https://github.com/CADS-Dry-INC-Sons/inventory-app/assets/146135600/e12ef7ce-4daf-4f9f-92fa-fd218df7fc25)
+
 ## Getting Started
 
 1. `npm install`

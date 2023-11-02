@@ -9,6 +9,7 @@ export default function EditForm({
   fetchItem,
   fetchItems,
   setIsEditing,
+  setMessage
 }) {
   const [itemName, setItemName] = useState(item.name);
   const [itemPrice, setItemPrice] = useState(item.price);
@@ -38,6 +39,7 @@ export default function EditForm({
     fetchItem(item.id);
     fetchItems();
     setIsEditing(false);
+    setMessage("Item successfully updated.")
   };
 
   return (

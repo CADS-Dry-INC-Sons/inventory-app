@@ -1,5 +1,7 @@
 const {Router} = require('express');
 const { Item } = require("../models");
+const express = require("express");
+const { check, validationResult } = require("express-validator")
 
 const itemRouter = Router();
 
@@ -24,7 +26,17 @@ itemRouter.get("/:id", async (req, res, next) => {
 })
 
 // POST new Item
-itemRouter.post("/", async (req, res, next) => {
+itemRouter.post("/", [
+  check("name").not().isEmpty().trim().isString(),
+  check("price").not().isEmpty().trim().isNumeric(),
+  check("description").not().isEmpty().isString(),
+  check("category").not().isEmpty().isString(), 
+  check("image").not().isEmpty().isURL()
+], async (req, res, next) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()){
+    res.json({error:errors.array()})
+  } else {
   try {
     const createdItem = await Item.create(req.body)
     console.log(createdItem)
@@ -32,10 +44,21 @@ itemRouter.post("/", async (req, res, next) => {
   } catch (err){
     next(err)
   }
+  }
 })
 
 // PUT update Item
-itemRouter.put("/:id", async (req,res,next) => {
+itemRouter.put("/:id", [
+  check("name").not().isEmpty().trim().isString(),
+  check("price").not().isEmpty().trim().isNumeric(),
+  check("description").not().isEmpty().isString(),
+  check("category").not().isEmpty().isString(), 
+  check("image").not().isEmpty().isURL()
+], async (req,res,next) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()){
+    res.json({error:errors.array()})
+  } else {
   try{
     await Item.update(req.body, {where:{id:req.params.id}})
     const find = await Item.findByPk(req.params.id)
@@ -43,6 +66,7 @@ itemRouter.put("/:id", async (req,res,next) => {
   } catch (err){
     next(err)
   }
+}
 })
 
 // DELETE Item by ID

@@ -56,7 +56,7 @@ export const App = () => {
           <Button onClick={()=> setIsAdding(!isAdding)}>Add New Item</Button>
           {
             isAdding ? 
-            <AddForm fetchItems={fetchItems} setMessage={setMessage}/> 
+            <AddForm fetchItems={fetchItems} setMessage={setMessage} setIsAdding={setIsAdding}/> 
             : 
             ""
           }

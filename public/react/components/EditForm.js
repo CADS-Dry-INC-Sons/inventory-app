@@ -9,8 +9,12 @@ export default function EditForm({
   fetchItem,
   fetchItems,
   setIsEditing,
-  setMessage
+  setMessage,
+  setError,
 }) {
+  {
+    /* Edit Form handle the fetch Update for a single item */
+  }
   const [itemName, setItemName] = useState(item.name);
   const [itemPrice, setItemPrice] = useState(item.price);
   const [itemCategory, setItemCategory] = useState(item.category);
@@ -36,10 +40,18 @@ export default function EditForm({
       body: JSON.stringify(editedData),
     });
 
-    fetchItem(item.id);
-    fetchItems();
-    setIsEditing(false);
-    setMessage("Item successfully updated.")
+    const data = await response.json();
+    if (data.error) {
+      const errorString =
+        "Invalid values for: " +
+        data.error.map((err) => `${err.path}`).join(" ");
+      setError(errorString);
+    } else {
+      fetchItem(item.id);
+      fetchItems();
+      setIsEditing(false);
+      setMessage("Item successfully updated.");
+    }
   };
 
   return (
@@ -51,6 +63,7 @@ export default function EditForm({
             type="text"
             name="name"
             value={itemName}
+            required
             onChange={(e) => setItemName(e.target.value)}
           />
         </Form.Group>
@@ -61,6 +74,7 @@ export default function EditForm({
             ttype="number"
             step=".01"
             name="price"
+            required
             value={itemPrice}
             onChange={(e) => setItemPrice(e.target.value)}
           />
@@ -72,6 +86,7 @@ export default function EditForm({
             type="text"
             name="description"
             value={itemDescription}
+            required
             onChange={(e) => setItemDescription(e.target.value)}
           />
         </Form.Group>
@@ -82,6 +97,7 @@ export default function EditForm({
             type="text"
             name="category"
             value={itemCategory}
+            required
             onChange={(e) => setItemCategory(e.target.value)}
           />
         </Form.Group>
@@ -92,6 +108,7 @@ export default function EditForm({
             type="text"
             name="image"
             value={itemImage}
+            required
             onChange={(e) => setItemImage(e.target.value)}
           />
         </Form.Group>

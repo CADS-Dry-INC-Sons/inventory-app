@@ -2,17 +2,32 @@ import React, { useState } from "react";
 import apiURL from "../api";
 import EditForm from "./EditForm";
 
-export const ItemShow = ({ setItem, item, fetchItems, fetchItem, setMessage }) => {
+export const ItemShow = ({
+  setItem,
+  item,
+  fetchItems,
+  fetchItem,
+  setMessage,
+  setError,
+}) => {
+  {
+    /*Item Show is the individual, detailed view of an item. It can be edited or deleted*/
+  }
   const [isEditing, setIsEditing] = useState(false);
 
   return (
     <div className="show">
       <div>
         <h2>🔥!</h2>
-        <button onClick={() => {
-          setItem({})
-          setMessage("")
-          }}>Back</button>
+        <button
+          onClick={() => {
+            setItem({});
+            setMessage("");
+            setError("");
+          }}
+        >
+          Back
+        </button>
       </div>
       <div>
         <img src={item.image} width="100" height="100" />
@@ -28,7 +43,7 @@ export const ItemShow = ({ setItem, item, fetchItems, fetchItem, setMessage }) =
           });
           fetchItems();
           setItem({});
-          setMessage("Item successfully deleted.")
+          setMessage("Item successfully deleted.");
         }}
       >
         Delete
@@ -45,6 +60,7 @@ export const ItemShow = ({ setItem, item, fetchItems, fetchItem, setMessage }) =
           fetchItem={fetchItem}
           setIsEditing={setIsEditing}
           setMessage={setMessage}
+          setError={setError}
         />
       )}
     </div>

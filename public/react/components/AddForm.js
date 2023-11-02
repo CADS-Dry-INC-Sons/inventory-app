@@ -3,7 +3,7 @@ import apiURL from "../api";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export const Form = ({ fetchItems }) => {
+export const AddForm = ({ fetchItems, setMessage, setIsAdding }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
@@ -24,6 +24,8 @@ export const Form = ({ fetchItems }) => {
     const data = await response.json();
     console.log(data);
     fetchItems();
+    setIsAdding(false);
+    setMessage("Successfully Added a New Item!")
     e.target.name.value = "";
     e.target.price.value = null;
     e.target.description.value = "";

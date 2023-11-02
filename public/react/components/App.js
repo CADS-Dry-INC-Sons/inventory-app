@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { ItemsList } from "./ItemsList";
 import { ItemShow } from "./ItemShow";
-import { Form } from "./Form";
+import { AddForm } from "./AddForm";
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert'
 // import and prepend the api url to any fetch calls
 import apiURL from "../api";
 
@@ -10,6 +11,7 @@ export const App = () => {
   const [items, setItems] = useState([]);
   const [item, setItem] = useState({});
   const [isAdding, setIsAdding] = useState(false);
+  const [message, setMessage] = useState("");
 
   async function fetchItems() {
     try {
@@ -40,6 +42,13 @@ export const App = () => {
     <main className="Container">
 	<div className="Heading">
       <h1>CADS-DRY INC & Sons Store</h1>
+      {message ? 
+          <Alert variant="success" onClose={() => setMessage('')} dismissible>
+          <Alert.Heading style={{backgroundColor: "transparent"}}>{message}</Alert.Heading>
+        </Alert>
+        :
+        ""
+    }
 	</div>
       {!item.name ? (
         <div className="Center">
@@ -47,12 +56,12 @@ export const App = () => {
           <Button onClick={()=> setIsAdding(!isAdding)}>Add New Item</Button>
           {
             isAdding ? 
-            <Form fetchItems={fetchItems} /> 
+            <AddForm fetchItems={fetchItems} setMessage={setMessage} setIsAdding={setIsAdding}/> 
             : 
             ""
           }
           
-          <ItemsList items={items} fetchItem={fetchItem} setIsAdding={setIsAdding} isAdding={isAdding}/>
+          <ItemsList items={items} fetchItem={fetchItem} setIsAdding={setIsAdding} isAdding={isAdding} setMessage={setMessage}/>
         </div>
       ) : (
 		<div className="Center">
@@ -61,6 +70,7 @@ export const App = () => {
           setItem={setItem}
           fetchItem={fetchItem}
           fetchItems={fetchItems}
+          setMessage={setMessage}
         />
 		</div>
       )}

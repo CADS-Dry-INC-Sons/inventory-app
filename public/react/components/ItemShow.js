@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import apiURL from "../api";
 import EditForm from "./EditForm";
 
-export const ItemShow = ({ setItem, item, fetchItems, fetchItem }) => {
+export const ItemShow = ({ setItem, item, fetchItems, fetchItem, setMessage }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
     <div className="show">
       <div>
         <h2>🔥!</h2>
-        <button onClick={() => setItem({})}>Back</button>
+        <button onClick={() => {
+          setItem({})
+          setMessage("")
+          }}>Back</button>
       </div>
       <div>
         <img src={item.image} width="100" height="100" />
@@ -25,6 +28,7 @@ export const ItemShow = ({ setItem, item, fetchItems, fetchItem }) => {
           });
           fetchItems();
           setItem({});
+          setMessage("Item successfully deleted.")
         }}
       >
         Delete
@@ -40,6 +44,7 @@ export const ItemShow = ({ setItem, item, fetchItems, fetchItem }) => {
           fetchItems={fetchItems}
           fetchItem={fetchItem}
           setIsEditing={setIsEditing}
+          setMessage={setMessage}
         />
       )}
     </div>

@@ -39,7 +39,6 @@ itemRouter.post("/", [
   } else {
   try {
     const createdItem = await Item.create(req.body)
-    console.log(createdItem)
     res.json(createdItem)
   } catch (err){
     next(err)
